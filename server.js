@@ -29,75 +29,7 @@ app.get("/", (req, res) => {
     res.render('index', data)
 }); 
 
-app.get("/catalogo", (req, res) => { 
-    let resultados = [];
-   
-    const sortProductos = () => {
-        const resultados = TRAILERFLIX.sort((a,b) => {
-        if (a.name < b.name) {
-            return -1
-        }
-        if( a.name > b.name){
-            return 1 
-        }
-        return 0 
-        })
-        resultados.length > 0 ? 
-        res.json(resultados) : res.json ({id: 'ERROR', description:'No se encuentra el curso solicitado'})
-        // console.log(resultados)         res.render('productos',  resultados) : res.json ({id: 'ERROR', description:'ERROR '})
-    }
-    sortProductos()
-}); 
 
-app.get("/titulo/:titulo", (req, res) => { 
-    
-    let titulo = req.params.titulo.trim().toLowerCase();
-    if (titulo !== ''){
-        console.log(typeof titulo);
-    const resultado = TRAILERFLIX.filter(pelicula => {
-    return  pelicula.titulo.includes(titulo.toLowerCase())
-    });
-    resultado !== [] ? 
-    res.json(resultado) : res.json ({id: 'ERROR', description:'No se encuentra nombre del producto solicitado'})
-    }   
-    else {
-        res.json ({id: 'ERROR', description:'No se detecto ningun titulo'})
-    }       
-        }); 
-
-
-        app.get("/categoria/:nombre", (req, res) => { 
-                let parametro = req.params.nombre.trim().toLowerCase();
-                if (parametro !== ''){
-                    console.log(typeof parametro);
-                // let resultado = []
-                const resultado = TRAILERFLIX.filter(pelicula => {
-                return  pelicula.categoria.includes(parametro.toLowerCase())
-                });
-                resultado !== [] ? 
-                res.json(resultado) : res.json ({id: 'ERROR', description:'No se encuentra nombre del producto solicitado'})
-                }   
-                else {
-                    res.json ({id: 'ERROR', description:'No se escribio ningun nombre'})
-                }
-
-                // const productoEncontrado = TRAILERFLIX.find(pelicula => pelicula.categoria === parametro);
-        
-                // if (productoEncontrado) {
-                //     res.json(productoEncontrado);
-                //   } else {
-                //     res.status(404).json({ id: 'ERROR', description: 'No se encuentra el nombre de la categoria solicitada' });
-                //   }
-        }); 
-
-        app.get("/reparto/:act", (req, res) => { 
-           
-        }); 
-
-
-        app.get("/trailer/:id", (req, res) => { 
-           
-        }); 
 
 app.listen(PORT, () => { 
     console.log(`API is listening on port ${PORT}`); 
