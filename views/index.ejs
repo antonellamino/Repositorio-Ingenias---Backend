@@ -1,18 +1,60 @@
 <%- include('./partials/head') %>
-<div class="container" style="align-items: center;">
-    <br>
-    <br>
-    <br>
-    <h1><%= title %></h1> 
-        <!-- <button class="button"> Ver Productos </button> -->
+
+<!-- <div class="container" style="align-items: center;">
+   
     
     <div class="contenedor">
-        <h1><%= name %></h1>
+      
         
       </div>
-</div>
+</div> -->
+<!-- <main> -->
+    <!-- <div class="PeliculaPpal">
+        <div class="contenedor">
+            <h3 class="titulo">Gambito de dama</h3>
+                <p class="descripcion">En los cincuenta, una joven de un orfanato descubre que tiene un increíble don para el ajedrez y recorre el arduo camino a la fama mientras lucha contra las adicciones. </p>
+                <button role="button" class="boton"><i class="fas fa-play">Reproducir</i></button>
+                <button role="button" class="boton"><i class="fas fa-info-circle">Más Información</i></button>
+            
+        </div>
+    </div> -->
+   
 
-<style>
-  
-</style>
+    <div class="container" >
+        <div id="peliculaCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <% for (let i = 0; i < peliculas.length; i++) { %>
+                    <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                        <div class="PeliculaPpal" style="background-image: url('<%= peliculas[i].foto %>');">
+                            <div class="contenedor">
+                                <h3 class="titulo"><%= peliculas[i].titulo %></h3>
+                                <p class="descripcion"><%= peliculas[i].descripcion %></p>
+                                <button role="button" class="boton" href="<%= peliculas[i].trailer %>">
+                                <a  class="boton" href="<%= peliculas[i].trailer %>" target="_blank">
+                                    <i class="fas fa-play">Reproducir</i>
+                                </a></button>
+                                <button role="button" class="boton"><i class="fas fa-info-circle">Más Información</i></button>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+            <a class="carousel-control-prev" href="#peliculaCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#peliculaCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </a>
+        </div>
+    </div>
+<!-- </main> -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const carousel = new bootstrap.Carousel(document.getElementById('peliculaCarousel'), {
+        interval: 3000 // Cambiar cada 3 segundos
+    });
+});
+</script>
 <%- include('./partials/footer') %>
