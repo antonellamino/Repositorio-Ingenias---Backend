@@ -1,0 +1,98 @@
+body {
+    /* background-color: bisque; */
+    content: "";
+    background-image:  url("../image/Fondo.jpg");
+    position: absolute;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* filter: blur(5px); */
+    backdrop-filter:  blur(5px); 
+    z-index: -1;
+  }
+  body h1 {
+    color: #000 !important;
+    text-align: center;
+  }
+  /* body::after {
+    filter: blur(5px); 
+  } */
+
+  .navbar-nav .nav-link {
+    font-size: 18px;
+    color:#FFD05B;
+  }
+  .nav-link:hover {
+    color: #F1543F;
+}
+
+.PeliculaPpal {
+  font-size: 16px;
+  min-height: 40.62em;
+  color:#fff;
+  background: linear-gradient(rgba(229, 9, 20, .30) 0%, rgb(0, 0, 0, .50)  100%);
+  /* , url(../image/001-gambito.jpg) */
+  background-position: center center;
+  background-repeat:space;
+  background-size: cover;
+  margin-bottom: 3.12em;
+  display: flex;
+  align-items: end;
+}
+
+#peliculaCarousel {
+  /* width: 100vw;
+  height: 100vh; */
+  background-size: cover;
+}
+
+.PeliculaPpal .contenedor {
+  margin: 2em; 
+  /* auto */
+  margin-bottom: 1.5em;
+}
+
+.PeliculaPpal .titulo {
+  font-family: 'Bebas Neue', sans-serif;
+font-weight: 600;
+font-size: 3em;
+margin-bottom: 0.4em;
+}
+.PeliculaPpal .descripcion {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: normal;
+font-size: 1em;
+margin-bottom: 1.25em;
+line-height: 1.75em;
+max-width: 50%;
+}
+
+.PeliculaPpal .boton {
+  font-family: 'Open Sans', sans-serif;
+    background:rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 0.31em;
+  /* padding: 0.93em 1.87em; */
+  color: #fff;
+  margin-right: 1.25em;
+  cursor: pointer;
+  transition: .3s ease all;
+  font-size: 1.12em;
+
+}
+
+.PeliculaPpal .boton i {
+  margin-right: 1.25em;
+}
+.PeliculaPpal .boton:hover{
+  background:#fff;
+  color: #000;
+}
+
+.footer {
+  padding: 1em 0;
+  color: #fff;
+  text-align: center;
+}
