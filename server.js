@@ -142,6 +142,31 @@ app.get("/", (req, res) => {
 
 
 
+
 app.listen(PORT, () => { 
     console.log(`API is listening on port ${PORT}`); 
 });
+
+
+//Para el endpoint /reparto/:act aplica también la misma lógica utilizada en el endpoint/titulo/:title. 
+//(Como resultado, retorna solo un array con la propiedad “reparto” y la propiedad “titulo” 
+//y sus respectivos datos (no devuelvas todo el contenido) ¿recuerdas a .map()?
+
+app.get('/reparto/:act', (req, res)=>{
+    const act = req.params.act.trim().toLowerCase();
+    const reparto = leerPeliculas().filter(reparto => reparto.act = act);
+
+//Retorna los datos del reparto     
+
+if(reparto !==[]){
+        const reparto1 = reparto.map(x =>{
+            return{
+                titulo: x.titulo,
+                reparto: x.reparto,
+            }
+        })
+        res.json(reparto1.includes(act))
+    } else {
+        res.status(404).send('No se encuentra un actor/actriz con ese nombre')
+}
+})
