@@ -43,7 +43,7 @@ app.get('/titulo/:title', (req,res)=>{
     const nombre = req.params.title.trim().toLowerCase();
     const filtro = TRAILERFLIX.filter(filtro=>filtro.titulo.toLowerCase().includes(nombre));
     
-    if(filtro !== []){
+    if(filtro.length > 0){
       res.json(filtro)
     }else{
         res.status(404).send("El título que busca no se encuentra disponible en nuestra plataforma.");
@@ -53,16 +53,19 @@ app.get('/titulo/:title', (req,res)=>{
 //Endpoint: Para el endpoint /categoria/:cat utiliza también .filter() y retorna todos los resultados 
 //encontrados. (Aquí son dos posibles valores solamente)
 
-app.get('/categoria/:cat', (req,res) => {
+app.get('/categoria/:cat', (req, res) => {
     const cate = req.params.cat.trim().toLowerCase();
-    const nombre = TRAILERFLIX.filter(nombre => nombre.categoria.toLowerCase() == cate); 
-   
+    if (cate == 'serie' | cate == 'película') {
+    const nombre = TRAILERFLIX.filter(nombre => nombre.categoria.toLowerCase() == cate);
 
-    if(nombre !== []){
+    if (nombre.length > 0) {
         res.json(nombre);
-    }else{
-        res.status(404).send("El título que busca no se encuentra en la categoria");
+    } else {
+        res.status(404).send("Para la categoria solicitada no existe ningun titulo ");
     }
+ } else {
+     res.status(404).send("No existe la categoria solicitada, recuerde que el filtro es por Serie o Película ");
+ }
 });
 
 app.listen(PORT, () => { 
